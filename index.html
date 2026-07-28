@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Hecho en Capas | Impresión 3D a tu medida</title>
+<meta name="description" content="Tienda online de productos de impresión 3D: figuras, organizadores, decoración y piezas personalizadas.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="site-header" id="header">
+  <div class="container header-inner">
+    <a href="#inicio" class="logo">
+      <span class="logo-cube">◆</span>
+      <span id="siteNameLogo">Hecho en Capas</span>
+    </a>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#inicio">Inicio</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#personalizados">Personalizados</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#resenas">Reseñas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" id="settingsBtn" aria-label="Editar sitio" title="Editar sitio">⚙️</button>
+      <button class="icon-btn" id="cartBtn" aria-label="Abrir carrito">
+        🛒 <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <span class="badge">Fabricación 100% local · Chile 🇨🇱</span>
+      <h1>Impresión 3D para tus ideas, <span class="accent">hechas realidad.</span></h1>
+      <p>Figuras, decoración, organizadores y piezas a medida. Imprimimos con tecnología FDM (PLA, PETG y ABS), con acabados de alta calidad y despacho a todo el país.</p>
+      <div class="hero-cta">
+        <a href="#catalogo" class="btn btn-primary">Ver catálogo</a>
+        <a href="#personalizados" class="btn btn-outline">Pedir diseño personalizado</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>+500</strong><span>Piezas entregadas</span></div>
+        <div><strong>+120</strong><span>Clientes felices</span></div>
+        <div><strong>24-72h</strong><span>Tiempo de impresión</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-card card-1">🧩</div>
+      <div class="floating-card card-2">🐉</div>
+      <div class="floating-card card-3">🪴</div>
+      <div class="printer-blob"></div>
+      <div class="printer-emoji">🖨️</div>
+    </div>
+  </div>
+</section>
+
+<!-- MÁS VENDIDOS -->
+<section class="bestsellers" id="masvendidos">
+  <div class="container">
+    <div class="section-title">
+      <h2>Los favoritos de nuestros clientes</h2>
+      <p>Lo más pedido del catálogo, elegido a mano.</p>
+    </div>
+    <div class="product-grid" id="bestSellerGrid"></div>
+  </div>
+</section>
+
+<!-- CATALOGO POR CATEGORÍAS -->
+<section class="catalog" id="catalogo">
+  <div class="container">
+    <div class="section-title">
+      <h2>Nuestro catálogo</h2>
+      <p>Elige una categoría para ver todos los productos disponibles.</p>
+    </div>
+    <div class="product-grid" id="categoryGrid"></div>
+  </div>
+</section>
+
+<!-- PERSONALIZADOS -->
+<section class="custom-section" id="personalizados">
+  <div class="container custom-inner">
+    <div class="custom-text">
+      <span class="badge badge-light">Servicio a medida</span>
+      <h2>¿Tienes una idea? La imprimimos por ti</h2>
+      <p>Envíanos tu modelo 3D (STL/OBJ) o cuéntanos tu idea y la diseñamos desde cero. Cotización sin costo en menos de 24 horas.</p>
+      <ul class="custom-list">
+        <li>✅ Repuestos y piezas funcionales</li>
+        <li>✅ Regalos y figuras personalizadas</li>
+        <li>✅ Prototipos y maquetas</li>
+        <li>✅ Letreros, logos y merchandising</li>
+      </ul>
+      <a id="customQuoteBtn" class="btn btn-primary">Cotizar por WhatsApp</a>
+    </div>
+    <div class="custom-visual">
+      <div class="glow"></div>
+      <span>📐 → 🖨️ → 🎁</span>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section class="about" id="nosotros">
+  <div class="container about-grid">
+    <div class="about-card">
+      <span class="about-icon">🎯</span>
+      <h3>Calidad garantizada</h3>
+      <p>Impresoras calibradas y control de calidad en cada pieza antes de despachar.</p>
+    </div>
+    <div class="about-card">
+      <span class="about-icon">🚚</span>
+      <h3>Envíos a todo Chile</h3>
+      <p>Despacho vía Chilexpress/Starken y retiro en persona en Santiago.</p>
+    </div>
+    <div class="about-card">
+      <span class="about-icon">♻️</span>
+      <h3>Materiales sustentables</h3>
+      <p>Trabajamos con filamentos PLA biodegradables siempre que es posible.</p>
+    </div>
+    <div class="about-card">
+      <span class="about-icon">💬</span>
+      <h3>Atención personalizada</h3>
+      <p>Te acompañamos desde la idea hasta el producto final, sin letra chica.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="reviews" id="resenas">
+  <div class="container">
+    <div class="section-title">
+      <h2>Lo que dicen nuestros clientes</h2>
+      <p>Experiencias reales de personas que ya recibieron sus pedidos.</p>
+    </div>
+    <div class="review-grid" id="reviewGrid"></div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="container contact-inner">
+    <div class="section-title light">
+      <h2>Hablemos de tu proyecto</h2>
+      <p>Escríbenos y te respondemos a la brevedad.</p>
+    </div>
+    <div class="contact-grid">
+      <form class="contact-form" id="contactForm">
+        <label>Nombre
+          <input type="text" name="nombre" required placeholder="Tu nombre">
+        </label>
+        <label>Correo
+          <input type="email" name="correo" required placeholder="tucorreo@ejemplo.com">
+        </label>
+        <label>Mensaje
+          <textarea name="mensaje" rows="4" required placeholder="Cuéntanos qué necesitas imprimir..."></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary full">Enviar por WhatsApp</button>
+        <p class="form-note" id="formNote" aria-live="polite"></p>
+      </form>
+      <div class="contact-info">
+        <a href="#" class="contact-item" id="whatsappLink">
+          <span>📱</span>
+          <div><strong>WhatsApp</strong><small id="contactWhatsappText">—</small></div>
+        </a>
+        <a href="#" class="contact-item" id="emailLink">
+          <span>✉️</span>
+          <div><strong>Correo</strong><small id="contactEmailText">—</small></div>
+        </a>
+        <a href="#" target="_blank" rel="noopener" class="contact-item" id="instagramLink">
+          <span>📷</span>
+          <div><strong>Instagram</strong><small id="contactInstagramText">—</small></div>
+        </a>
+        <div class="contact-item">
+          <span>📍</span>
+          <div><strong>Ubicación</strong><small id="contactAddressText">—</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> <span id="siteNameFooter">Hecho en Capas</span>. Todos los derechos reservados.</p>
+    <p class="footer-note">Hecho con 🧡 e impresión 3D.</p>
+  </div>
+</footer>
+
+<!-- CARRITO -->
+<div class="overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Carrito de compras">
+  <div class="cart-header">
+    <h3>Tu carrito</h3>
+    <button id="closeCart" aria-label="Cerrar carrito">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total</span>
+      <strong id="cartTotal">$0</strong>
+    </div>
+    <button class="btn btn-primary full" id="checkoutBtn">Finalizar pedido por WhatsApp</button>
+    <p class="hint cart-hint">Los precios son finales. Si necesitas una personalización especial (color, tamaño, texto), puede tener un costo adicional que se confirma por WhatsApp.</p>
+  </div>
+</aside>
+
+<!-- MODAL CATEGORÍA -->
+<div class="overlay" id="categoryOverlay"></div>
+<div class="category-modal" id="categoryModal" role="dialog" aria-modal="true" aria-label="Detalle de la categoría">
+  <button class="modal-close" id="closeCategoryModal" aria-label="Cerrar">✕</button>
+  <div class="category-modal-header">
+    <div class="category-modal-media" id="categoryModalMedia"></div>
+    <div>
+      <h3 id="categoryModalName"></h3>
+      <p id="categoryModalDesc"></p>
+      <span class="product-price" id="categoryModalPrice"></span>
+    </div>
+  </div>
+  <div class="category-modal-body">
+    <h4>Productos en esta categoría</h4>
+    <div class="category-product-list" id="categoryProductList"></div>
+    <p class="hint wholesale-note" id="categoryWholesaleNote"></p>
+  </div>
+</div>
+
+<!-- MODAL PRODUCTO -->
+<div class="overlay" id="productOverlay"></div>
+<div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-label="Detalle del producto">
+  <button class="modal-close" id="closeProductModal" aria-label="Cerrar">✕</button>
+  <div class="product-modal-media" id="productModalMedia"></div>
+  <div class="product-modal-body">
+    <button type="button" class="back-to-category" id="backToCategory" hidden>← Volver a <span id="backToCategoryName"></span></button>
+    <span class="product-cat" id="productModalCat"></span>
+    <h3 id="productModalName"></h3>
+    <p id="productModalDesc"></p>
+    <div class="product-modal-price" id="productModalPrice"></div>
+    <div class="color-selector" id="productModalColors" hidden>
+      <span class="color-selector-label">Color: <strong id="selectedColorName"></strong></span>
+      <div class="color-swatches" id="colorSwatches"></div>
+    </div>
+    <div class="product-modal-actions">
+      <div class="qty-stepper">
+        <button type="button" id="modalQtyMinus" aria-label="Restar cantidad">−</button>
+        <span id="modalQty">1</span>
+        <button type="button" id="modalQtyPlus" aria-label="Sumar cantidad">+</button>
+      </div>
+      <button class="btn btn-primary" id="modalAddToCart">Agregar al carrito</button>
+    </div>
+    <p class="hint wholesale-note" id="modalWholesaleNote" hidden></p>
+    <button class="btn btn-outline full" id="modalWhatsappBtn">Consultar por WhatsApp</button>
+  </div>
+</div>
+
+<!-- MODAL EDITAR SITIO -->
+<div class="overlay" id="settingsOverlay"></div>
+<div class="settings-modal" id="settingsModal" role="dialog" aria-modal="true" aria-label="Editar sitio">
+  <div class="settings-header">
+    <h3>Editar sitio</h3>
+    <div class="settings-header-actions">
+      <button id="lockPanel" aria-label="Bloquear panel" title="Bloquear panel">🔒</button>
+      <button id="closeSettings" aria-label="Cerrar">✕</button>
+    </div>
+  </div>
+  <div class="settings-tabs">
+    <button class="settings-tab active" data-tab="contacto" type="button">Contacto</button>
+    <button class="settings-tab" data-tab="categorias" type="button">Categorías</button>
+    <button class="settings-tab" data-tab="productos" type="button">Productos</button>
+    <button class="settings-tab" data-tab="resenas" type="button">Reseñas</button>
+  </div>
+
+  <div class="settings-panel" data-panel="contacto">
+    <form id="configForm">
+      <label>Número de WhatsApp (código de país + número, sin “+”)
+        <input type="text" name="whatsapp" required pattern="[0-9]{8,15}" placeholder="56912345678">
+      </label>
+      <label>Correo de contacto
+        <input type="email" name="email" required>
+      </label>
+      <label>Usuario de Instagram
+        <input type="text" name="instagram" required placeholder="@tuusuario">
+      </label>
+      <label>Ubicación
+        <input type="text" name="address" required placeholder="Ciudad, país">
+      </label>
+      <label>Cantidad mínima para precio mayorista
+        <input type="number" name="wholesaleQty" min="2" step="1" required>
+      </label>
+      <label>Mensaje de precio mayorista
+        <textarea name="wholesaleMessage" rows="2" required></textarea>
+      </label>
+      <button type="submit" class="btn btn-primary full">Guardar cambios</button>
+      <p class="form-note" id="configNote" aria-live="polite"></p>
+    </form>
+
+    <div class="security-box">
+      <h4>Seguridad del panel</h4>
+      <p class="hint">Cambia el PIN que protege el acceso a "Editar sitio".</p>
+      <form id="changePinForm">
+        <label>Nuevo PIN (mínimo 4 dígitos)
+          <input type="password" name="newPin" inputmode="numeric" minlength="4" required autocomplete="new-password">
+        </label>
+        <label>Confirmar nuevo PIN
+          <input type="password" name="confirmPin" inputmode="numeric" minlength="4" required autocomplete="new-password">
+        </label>
+        <button type="submit" class="btn btn-outline full">Actualizar PIN</button>
+        <p class="form-note" id="changePinNote" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <div class="settings-panel" data-panel="categorias" hidden>
+    <form id="categoryForm">
+      <input type="hidden" name="id">
+      <label>Nombre de la categoría
+        <input type="text" name="name" required placeholder="Ej: Llaveros">
+      </label>
+      <label>Descripción
+        <textarea name="desc" rows="2" required placeholder="Ej: Llaveros 3D con diseños divertidos..."></textarea>
+      </label>
+      <label>Emoji representativo
+        <input type="text" name="emoji" maxlength="4" placeholder="🔑">
+      </label>
+      <label>Imagen (subir archivo)
+        <input type="file" name="imageFile" accept="image/*">
+      </label>
+      <label>o URL de imagen
+        <input type="url" name="imageUrl" placeholder="https://...">
+      </label>
+      <div id="categoryImagePreview" class="image-preview" hidden>
+        <img id="categoryImagePreviewImg" alt="Vista previa de la categoría">
+      </div>
+      <div class="form-row">
+        <button type="submit" class="btn btn-primary">Guardar categoría</button>
+        <button type="button" class="btn btn-outline" id="cancelEditCategory">Nueva categoría</button>
+      </div>
+      <p class="form-note" id="categoryNote" aria-live="polite"></p>
+    </form>
+    <div class="admin-product-list" id="adminCategoryList"></div>
+  </div>
+
+  <div class="settings-panel" data-panel="productos" hidden>
+    <form id="productForm">
+      <input type="hidden" name="id">
+      <label>Nombre del producto
+        <input type="text" name="name" required>
+      </label>
+      <label>Categoría
+        <input type="text" name="category" required list="categoryList" placeholder="Ej: Figuras">
+        <datalist id="categoryList"></datalist>
+      </label>
+      <label>Precio final (CLP)
+        <input type="number" name="price" min="0" step="1" required>
+      </label>
+      <p class="hint">Este es el precio final del producto tal como está. Si el cliente pide una personalización (color, tamaño, texto), esa modificación puede tener un costo adicional que se confirma por WhatsApp.</p>
+      <label>Descripción
+        <textarea name="desc" rows="2" required></textarea>
+      </label>
+      <label>Imagen (subir archivo)
+        <input type="file" name="imageFile" accept="image/*">
+      </label>
+      <label>o URL de imagen
+        <input type="url" name="imageUrl" placeholder="https://...">
+      </label>
+      <div id="productImagePreview" class="image-preview" hidden>
+        <img id="productImagePreviewImg" alt="Vista previa del producto">
+      </div>
+
+      <div class="color-manager">
+        <span class="color-manager-label">Colores disponibles (opcional)</span>
+        <p class="hint">Si agregas colores, en la ficha del producto aparecerá un selector. Si subes una foto para un color, se mostrará esa foto al elegirlo; si no, se muestra un círculo con ese color.</p>
+        <div class="color-input-row">
+          <input type="text" id="colorNameInput" placeholder="Nombre (ej: Rojo)">
+          <input type="color" id="colorHexInput" value="#ff6fae">
+          <input type="file" id="colorImageInput" accept="image/*">
+          <button type="button" id="addColorBtn" class="btn btn-outline">Agregar</button>
+        </div>
+        <div class="color-chip-list" id="colorChipList"></div>
+      </div>
+
+      <label class="checkbox-label">
+        <input type="checkbox" name="featured">
+        ⭐ Marcar como favorito / más vendido
+      </label>
+      <p class="hint">Los productos marcados aparecen en la sección "Los favoritos de nuestros clientes" del inicio.</p>
+      <div class="form-row">
+        <button type="submit" class="btn btn-primary">Guardar producto</button>
+        <button type="button" class="btn btn-outline" id="cancelEditProduct">Nuevo producto</button>
+      </div>
+      <p class="form-note" id="productNote" aria-live="polite"></p>
+    </form>
+    <div class="admin-product-list" id="adminProductList"></div>
+  </div>
+
+  <div class="settings-panel" data-panel="resenas" hidden>
+    <form id="reviewForm">
+      <input type="hidden" name="id">
+      <label>Nombre del cliente
+        <input type="text" name="name" required placeholder="Ej: Camila R.">
+      </label>
+      <label>Calificación
+        <select name="rating" required>
+          <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+          <option value="4">⭐⭐⭐⭐ (4)</option>
+          <option value="3">⭐⭐⭐ (3)</option>
+          <option value="2">⭐⭐ (2)</option>
+          <option value="1">⭐ (1)</option>
+        </select>
+      </label>
+      <label>Comentario
+        <textarea name="comment" rows="3" required placeholder="Lo que dijo el cliente..."></textarea>
+      </label>
+      <div class="form-row">
+        <button type="submit" class="btn btn-primary">Guardar reseña</button>
+        <button type="button" class="btn btn-outline" id="cancelEditReview">Nueva reseña</button>
+      </div>
+      <p class="form-note" id="reviewNote" aria-live="polite"></p>
+    </form>
+    <div class="admin-product-list" id="adminReviewList"></div>
+  </div>
+</div>
+
+<!-- MODAL PIN DE ACCESO -->
+<div class="overlay" id="pinOverlay"></div>
+<div class="pin-modal" id="pinModal" role="dialog" aria-modal="true" aria-label="Acceso de administrador">
+  <div class="settings-header">
+    <h3>Acceso restringido</h3>
+    <button id="closePin" aria-label="Cerrar">✕</button>
+  </div>
+  <div class="settings-panel">
+    <p class="hint">Ingresa el PIN para editar el contacto y los productos de la tienda.</p>
+    <form id="pinForm">
+      <label>
+        <span>PIN de acceso</span>
+        <input type="password" id="pinInput1" inputmode="numeric" minlength="4" required autocomplete="off">
+      </label>
+      <button type="submit" class="btn btn-primary full">Entrar</button>
+      <p class="form-note" id="pinNote" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/products.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
