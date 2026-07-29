@@ -18,7 +18,9 @@ const DEFAULT_CONFIG = {
   instagram: '@hechoencapas',
   address: 'Santiago, Chile',
   wholesaleQty: 3,
-  wholesaleMessage: 'Si necesitas más de {qty} unidades, escríbenos por WhatsApp para un precio mayorista.'
+  wholesaleMessage: 'Si necesitas más de {qty} unidades, escríbenos por WhatsApp para un precio mayorista.',
+  announcementText: 'Envío a todo Chile · Retiro en Santiago y Metro',
+  heroImage: ''
 };
 
 // PIN fijo de acceso al panel "Editar sitio". Solo quien lo conozca puede entrar;
@@ -98,6 +100,12 @@ function nextReviewId() {
 }
 
 // ==== ELEMENTS ====
+const announcementBar = document.getElementById('announcementBar');
+const whatsappFloat = document.getElementById('whatsappFloat');
+const heroPhoto = document.getElementById('heroPhoto');
+const heroTrustBadge = document.getElementById('heroTrustBadge');
+const heroTrustStars = document.getElementById('heroTrustStars');
+const heroTrustText = document.getElementById('heroTrustText');
 const categoryGrid = document.getElementById('categoryGrid');
 const bestSellerGrid = document.getElementById('bestSellerGrid');
 const reviewGrid = document.getElementById('reviewGrid');
@@ -185,6 +193,8 @@ const adminProductList = document.getElementById('adminProductList');
 const categoryList = document.getElementById('categoryList');
 const productImagePreview = document.getElementById('productImagePreview');
 const productImagePreviewImg = document.getElementById('productImagePreviewImg');
+const heroImagePreview = document.getElementById('heroImagePreview');
+const heroImagePreviewImg = document.getElementById('heroImagePreviewImg');
 const categoryForm = document.getElementById('categoryForm');
 const categoryNote = document.getElementById('categoryNote');
 const cancelEditCategory = document.getElementById('cancelEditCategory');
@@ -227,6 +237,16 @@ function applyConfigToDOM() {
   contactInstagramText.textContent = config.instagram.startsWith('@') ? config.instagram : `@${config.instagram}`;
 
   contactAddressText.textContent = config.address;
+
+  announcementBar.textContent = config.announcementText;
+  whatsappFloat.href = `https://wa.me/${config.whatsapp}`;
+  updateHeroPhoto();
+}
+
+function updateHeroPhoto() {
+  heroPhoto.innerHTML = config.heroImage
+    ? `<img src="${escapeAttr(config.heroImage)}" alt="${escapeAttr(SITE_NAME)}">`
+    : `<div class="hero-photo-placeholder"><span class="icon">📷</span><span>Sube una foto de tus lámparas desde ⚙️ → Contacto para mostrarla aquí</span></div>`;
 }
 
 function formatWhatsappDisplay(number) {
@@ -256,6 +276,16 @@ function formatFromPrice(price) {
 }
 function productsInCategory(categoryName) {
   return products.filter(p => p.category === categoryName);
+}
+function priceHtml(p) {
+  if (p.compareAtPrice && p.compareAtPrice > p.price) {
+    return `<span class="price-original">${CLP.format(p.compareAtPrice)}</span><span class="product-price sale">${CLP.format(p.price)}</span>`;
+  }
+  return `<span class="product-price">${CLP.format(p.price)}</span>`;
+}
+function colorDotsHtml(p) {
+  if (!Array.isArray(p.colors) || !p.colors.length) return '';
+  return `<div class="card-color-dots">${p.colors.slice(0, 6).map(c => `<span class="card-color-dot" style="background-color:${escapeAttr(c.hex || '#ccc')};" title="${escapeAttr(c.name)}"></span>`).join('')}</div>`;
 }
 
 // ==== CATEGORY GRID (nivel 1 del catálogo) ====
@@ -316,8 +346,9 @@ function renderBestSellers() {
       </div>
       <div class="product-body">
         <h3>${escapeHtml(p.name)}</h3>
+        ${colorDotsHtml(p)}
         <div class="product-footer">
-          <span class="product-price">${CLP.format(p.price)}</span>
+          <span class="price-group">${priceHtml(p)}</span>
           <span class="view-more">Ver detalles →</span>
         </div>
       </div>
@@ -342,19 +373,30 @@ function renderReviews() {
   const reviewsSection = reviewGrid.closest('section');
   if (!reviews.length) {
     reviewsSection.hidden = true;
+  } else {
+    reviewsSection.hidden = false;
+    reviewGrid.innerHTML = reviews.map(r => `
+      <div class="review-card">
+        <div class="review-stars">${starString(r.rating)}</div>
+        <p class="review-comment">"${escapeHtml(r.comment)}"</p>
+        <div class="review-author">
+          <strong>${escapeHtml(r.name)}</strong>
+          <span>${formatReviewDate(r.date)}</span>
+        </div>
+      </div>
+    `).join('');
+  }
+  renderHeroTrustBadge();
+}
+function renderHeroTrustBadge() {
+  if (!reviews.length) {
+    heroTrustBadge.hidden = true;
     return;
   }
-  reviewsSection.hidden = false;
-  reviewGrid.innerHTML = reviews.map(r => `
-    <div class="review-card">
-      <div class="review-stars">${starString(r.rating)}</div>
-      <p class="review-comment">"${escapeHtml(r.comment)}"</p>
-      <div class="review-author">
-        <strong>${escapeHtml(r.name)}</strong>
-        <span>${formatReviewDate(r.date)}</span>
-      </div>
-    </div>
-  `).join('');
+  const avg = reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
+  heroTrustBadge.hidden = false;
+  heroTrustStars.textContent = starString(Math.round(avg));
+  heroTrustText.textContent = `${avg.toFixed(1)}/5 · +${reviews.length} reseñas`;
 }
 function starString(rating) {
   const r = Math.max(0, Math.min(5, Number(rating) || 0));
@@ -387,7 +429,7 @@ function openCategoryModal(id) {
           <div class="category-product-thumb">${productMediaHtml(p)}</div>
           <div class="category-product-info">
             <strong>${escapeHtml(p.name)}</strong>
-            <span>${CLP.format(p.price)}</span>
+            <span class="price-group">${priceHtml(p)}</span>
           </div>
         </div>
       `).join('')
@@ -444,7 +486,7 @@ function openProductModal(id, opts) {
   productModalCat.textContent = product.category;
   productModalName.textContent = product.name;
   productModalDesc.textContent = product.desc;
-  productModalPrice.textContent = CLP.format(product.price);
+  productModalPrice.innerHTML = priceHtml(product);
   updateModalWholesaleNote();
 
   const hasColors = Array.isArray(product.colors) && product.colors.length > 0;
@@ -827,12 +869,31 @@ function populateConfigForm() {
   configForm.email.value = config.email;
   configForm.instagram.value = config.instagram;
   configForm.address.value = config.address;
+  configForm.announcementText.value = config.announcementText;
+  configForm.heroImageUrl.value = config.heroImage && !config.heroImage.startsWith('data:') ? config.heroImage : '';
   configForm.wholesaleQty.value = config.wholesaleQty;
   configForm.wholesaleMessage.value = config.wholesaleMessage;
+  if (config.heroImage) {
+    heroImagePreviewImg.src = config.heroImage;
+    heroImagePreview.hidden = false;
+  } else {
+    heroImagePreview.hidden = true;
+  }
   configNote.textContent = '';
 }
 
-configForm.addEventListener('submit', e => {
+configForm.heroImageFile.addEventListener('change', () => {
+  const file = configForm.heroImageFile.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    heroImagePreviewImg.src = reader.result;
+    heroImagePreview.hidden = false;
+  };
+  reader.readAsDataURL(file);
+});
+
+configForm.addEventListener('submit', async e => {
   e.preventDefault();
   const data = new FormData(configForm);
   const whatsapp = String(data.get('whatsapp')).replace(/\D/g, '');
@@ -845,16 +906,27 @@ configForm.addEventListener('submit', e => {
     configNote.textContent = 'La cantidad mínima para precio mayorista debe ser 2 o más.';
     return;
   }
+  const heroImageUrl = data.get('heroImageUrl').trim();
+  const heroImageFile = configForm.heroImageFile.files[0];
+  let heroImage = config.heroImage;
+  if (heroImageFile) {
+    heroImage = await fileToDataUrl(heroImageFile);
+  } else if (heroImageUrl) {
+    heroImage = heroImageUrl;
+  }
   config = {
     whatsapp,
     email: data.get('email').trim(),
     instagram: data.get('instagram').trim(),
     address: data.get('address').trim(),
+    announcementText: data.get('announcementText').trim() || DEFAULT_CONFIG.announcementText,
+    heroImage,
     wholesaleQty,
     wholesaleMessage: data.get('wholesaleMessage').trim() || DEFAULT_CONFIG.wholesaleMessage
   };
   saveConfig();
   applyConfigToDOM();
+  configForm.heroImageFile.value = '';
   configNote.textContent = 'Cambios guardados ✅';
   showToast('Datos de contacto actualizados');
 });
@@ -1070,6 +1142,8 @@ productForm.addEventListener('submit', async e => {
   const name = data.get('name').trim();
   const category = data.get('category').trim();
   const price = Number(data.get('price'));
+  const compareAtPriceRaw = data.get('compareAtPrice').trim();
+  const compareAtPrice = compareAtPriceRaw ? Number(compareAtPriceRaw) : null;
   const desc = data.get('desc').trim();
   const imageUrl = data.get('imageUrl').trim();
   const file = productForm.imageFile.files[0];
@@ -1077,6 +1151,10 @@ productForm.addEventListener('submit', async e => {
 
   if (!name || !category || !desc || !Number.isFinite(price) || price < 0) {
     productNote.textContent = 'Revisa los campos: falta información o el precio no es válido.';
+    return;
+  }
+  if (compareAtPrice !== null && (!Number.isFinite(compareAtPrice) || compareAtPrice <= price)) {
+    productNote.textContent = 'El precio original debe ser mayor al precio final (o déjalo vacío si no está en oferta).';
     return;
   }
 
@@ -1101,6 +1179,7 @@ productForm.addEventListener('submit', async e => {
       product.name = name;
       product.category = categoryName;
       product.price = price;
+      product.compareAtPrice = compareAtPrice;
       product.desc = desc;
       product.featured = featured;
       product.colors = productFormColors;
@@ -1113,6 +1192,7 @@ productForm.addEventListener('submit', async e => {
       name,
       category: categoryName,
       price,
+      compareAtPrice,
       desc,
       image,
       emoji: '📦',
@@ -1150,7 +1230,7 @@ function renderAdminProductList() {
       <div class="admin-product-thumb">${productMediaHtml(p)}</div>
       <div class="admin-product-info">
         <strong>${p.featured ? '⭐ ' : ''}${escapeHtml(p.name)}</strong>
-        <span>${escapeHtml(p.category)} · ${CLP.format(p.price)}</span>
+        <span>${escapeHtml(p.category)} · ${CLP.format(p.price)}${p.compareAtPrice ? ` (antes ${CLP.format(p.compareAtPrice)})` : ''}</span>
       </div>
       <div class="admin-product-actions">
         <button type="button" data-edit="${p.id}">Editar</button>
@@ -1172,6 +1252,7 @@ adminProductList.addEventListener('click', e => {
     productForm.name.value = product.name;
     productForm.category.value = product.category;
     productForm.price.value = product.price;
+    productForm.compareAtPrice.value = product.compareAtPrice || '';
     productForm.desc.value = product.desc;
     productForm.imageUrl.value = product.image && !product.image.startsWith('data:') ? product.image : '';
     productForm.featured.checked = !!product.featured;
