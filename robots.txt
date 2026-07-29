@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hecho-en-capas.netlify.app/sitemap.xml
