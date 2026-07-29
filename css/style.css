@@ -742,12 +742,22 @@ a.contact-item:hover { border-color: var(--primary); }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 4.5rem;
   align-self: start;
   aspect-ratio: 1 / 1;
   width: 100%;
 }
 .product-modal-media img { width: 100%; height: 100%; object-fit: cover; }
+.media-placeholder {
+  width: 42%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.65);
+  box-shadow: 0 10px 24px rgba(54,43,58,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.4rem;
+}
 .product-modal-body {
   padding: 30px 28px;
   display: flex;
@@ -1204,7 +1214,7 @@ a.contact-item:hover { border-color: var(--primary); }
     z-index: 99;
   }
   .product-modal { grid-template-columns: 1fr; }
-  .product-modal-media { aspect-ratio: 1 / 1; font-size: 3.5rem; }
+  .media-placeholder { font-size: 2.8rem; }
   .about-grid { grid-template-columns: repeat(2, 1fr); }
 }
 

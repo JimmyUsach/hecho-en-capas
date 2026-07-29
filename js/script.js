@@ -457,9 +457,10 @@ function openProductModal(id, opts) {
   productOverlay.classList.add('active');
 }
 function updateProductModalMedia(product) {
-  productModalMedia.innerHTML = (selectedColor && selectedColor.image)
-    ? `<img src="${escapeAttr(selectedColor.image)}" alt="${escapeAttr(product.name)} - ${escapeAttr(selectedColor.name)}">`
-    : productMediaHtml(product);
+  const image = (selectedColor && selectedColor.image) || product.image;
+  productModalMedia.innerHTML = image
+    ? `<img src="${escapeAttr(image)}" alt="${escapeAttr(product.name)}${selectedColor ? ' - ' + escapeAttr(selectedColor.name) : ''}">`
+    : `<div class="media-placeholder">${product.emoji || '📦'}</div>`;
   selectedColorNameEl.textContent = selectedColor ? selectedColor.name : '';
 }
 function renderColorSwatches(product) {
