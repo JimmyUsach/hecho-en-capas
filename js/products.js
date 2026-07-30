@@ -23,7 +23,7 @@ const CATEGORIES = [
     name: "Hogar",
     emoji: "🪴",
     image: "",
-    desc: "Macetas, posavasos y detalles para darle vida a tu espacio."
+    desc: "Macetas, lámparas, posavasos y detalles para darle vida a tu espacio."
   },
   {
     id: 4,
@@ -38,13 +38,6 @@ const CATEGORIES = [
     emoji: "💍",
     image: "",
     desc: "Pulseras, dijes y pequeños accesorios impresos en 3D."
-  },
-  {
-    id: 6,
-    name: "Lámparas",
-    emoji: "💡",
-    image: "",
-    desc: "Lámparas decorativas impresas en 3D con distintas texturas y estilos, pensadas para transformar cualquier rincón de tu casa."
   }
 ];
 
@@ -193,30 +186,13 @@ const PRODUCTS = [
   {
     id: 12,
     name: "Lámpara luna",
-    category: "Lámparas",
+    category: "Hogar",
     price: 21990,
-    compareAtPrice: 24990,
     image: "",
     emoji: "🌙",
     desc: "Lámpara decorativa con textura lunar realista, incluye base LED.",
     featured: true,
     colors: []
-  },
-  {
-    id: 17,
-    name: "Lámpara prisma",
-    category: "Lámparas",
-    price: 25990,
-    compareAtPrice: 28990,
-    image: "",
-    emoji: "🔺",
-    desc: "Lámpara de líneas geométricas con luz cálida, ideal como velador o para un rincón de lectura.",
-    featured: true,
-    colors: [
-      { name: "Blanco", hex: "#f2f2f2", image: "" },
-      { name: "Negro", hex: "#2c2c2c", image: "" },
-      { name: "Madera", hex: "#a9784f", image: "" }
-    ]
   },
   {
     id: 13,

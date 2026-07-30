@@ -20,7 +20,7 @@
 <meta name="twitter:title" content="Hecho en Capas | Impresión 3D a tu medida">
 <meta name="twitter:description" content="Tienda online de productos de impresión 3D en Chile: llaveros, figuras, decoración para el hogar y piezas personalizadas.">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%232f3c30'/%3E%3Cstop offset='100%25' stop-color='%23b5502f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='url(%23g)'/%3E%3Ctext x='50' y='70' font-size='58' text-anchor='middle' fill='white'%3E%E2%97%86%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23ff6fae'/%3E%3Cstop offset='100%25' stop-color='%238b6ef2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='url(%23g)'/%3E%3Ctext x='50' y='70' font-size='58' text-anchor='middle' fill='white'%3E%E2%97%86%3C/text%3E%3C/svg%3E">
 
 <link rel="stylesheet" href="css/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,8 +44,6 @@
 </script>
 </head>
 <body>
-
-<div class="announcement-bar" id="announcementBar"></div>
 
 <header class="site-header" id="header">
   <div class="container header-inner">
@@ -80,8 +78,8 @@
   <div class="container hero-inner">
     <div class="hero-text">
       <span class="badge">Fabricación 100% local · Chile 🇨🇱</span>
-      <h1>Lámparas y piezas 3D <span class="accent">que transforman tu espacio</span></h1>
-      <p>Lámparas decorativas, figuras, organizadores y piezas a medida. Imprimimos con tecnología FDM (PLA, PETG y ABS), con acabados de alta calidad y despacho a todo el país.</p>
+      <h1>Impresión 3D para tus ideas, <span class="accent">hechas realidad.</span></h1>
+      <p>Figuras, decoración, organizadores y piezas a medida. Imprimimos con tecnología FDM (PLA, PETG y ABS), con acabados de alta calidad y despacho a todo el país.</p>
       <div class="hero-cta">
         <a href="#catalogo" class="btn btn-primary">Ver catálogo</a>
         <a href="#personalizados" class="btn btn-outline">Pedir diseño personalizado</a>
@@ -93,16 +91,11 @@
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-photo" id="heroPhoto">
-        <div class="hero-photo-placeholder" id="heroPhotoPlaceholder">
-          <span class="icon">📷</span>
-          <span>Sube una foto de tus lámparas desde ⚙️ → Contacto para mostrarla aquí</span>
-        </div>
-      </div>
-      <div class="hero-trust-badge" id="heroTrustBadge" hidden>
-        <span class="stars" id="heroTrustStars"></span>
-        <span id="heroTrustText"></span>
-      </div>
+      <div class="floating-card card-1">🧩</div>
+      <div class="floating-card card-2">🐉</div>
+      <div class="floating-card card-3">🪴</div>
+      <div class="printer-blob"></div>
+      <div class="printer-emoji">🖨️</div>
     </div>
   </div>
 </section>
@@ -338,19 +331,6 @@
       <label>Ubicación
         <input type="text" name="address" required placeholder="Ciudad, país">
       </label>
-      <label>Texto de la barra superior
-        <input type="text" name="announcementText" required placeholder="Ej: Envío a todo Chile · Retiro en Santiago">
-      </label>
-      <label>Foto de portada (hero) — subir archivo
-        <input type="file" name="heroImageFile" accept="image/*">
-      </label>
-      <label>o URL de imagen de portada
-        <input type="url" name="heroImageUrl" placeholder="https://...">
-      </label>
-      <div id="heroImagePreview" class="image-preview" hidden>
-        <img id="heroImagePreviewImg" alt="Vista previa de la portada">
-      </div>
-      <p class="hint">Recomendado: foto vertical (formato 4:5), mínimo 800×1000 px, con una de tus lámparas o productos bien iluminada.</p>
       <label>Cantidad mínima para precio mayorista
         <input type="number" name="wholesaleQty" min="2" step="1" required>
       </label>
@@ -419,9 +399,6 @@
       </label>
       <label>Precio final (CLP)
         <input type="number" name="price" min="0" step="1" required>
-      </label>
-      <label>Precio original (opcional, para mostrar oferta tachada)
-        <input type="number" name="compareAtPrice" min="0" step="1" placeholder="Déjalo vacío si no está en oferta">
       </label>
       <p class="hint">Este es el precio final del producto tal como está. Si el cliente pide una personalización (color, tamaño, texto), esa modificación puede tener un costo adicional que se confirma por WhatsApp.</p>
       <label>Descripción
@@ -510,9 +487,6 @@
     </form>
   </div>
 </div>
-
-<!-- WHATSAPP FLOTANTE -->
-<a href="#" class="whatsapp-float" id="whatsappFloat" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">💬</a>
 
 <!-- Toast -->
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
