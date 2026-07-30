@@ -102,22 +102,29 @@ img { max-width: 100%; display: block; }
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 1.2rem;
-  letter-spacing: 0.03em;
+  gap: 12px;
 }
-.logo-mark-chip {
+.logo-mark { flex-shrink: 0; }
+.logo-wordmark {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  flex-shrink: 0;
+  align-items: baseline;
+  gap: 8px;
+}
+.logo-word {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+.logo-badge {
+  background: linear-gradient(135deg, var(--primary-2), var(--primary));
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  padding: 2px 9px;
+  border-radius: 7px;
 }
 .main-nav {
   display: flex;
@@ -1245,7 +1252,10 @@ a.contact-item:hover { border-color: var(--primary); }
   .header-inner { height: 64px; }
   .header-actions { gap: 6px; }
   .icon-btn { padding: 8px 10px; font-size: 0.95rem; }
-  .logo { font-size: 1rem; gap: 6px; }
+  .logo { gap: 8px; }
+  .logo-mark { width: 32px; height: 34px; }
+  .logo-word { font-size: 1.1rem; }
+  .logo-badge { font-size: 0.85rem; padding: 1px 7px; }
 
   .hero { padding: 64px 0 36px; }
   .hero-visual { height: 210px; }

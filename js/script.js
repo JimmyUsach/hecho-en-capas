@@ -9,13 +9,13 @@ const STORAGE_KEYS = {
 };
 
 // Nombre de marca fijo (no editable desde el panel).
-const SITE_NAME = 'Hecho en Capas';
+const SITE_NAME = 'Taller3D';
 
 // ==== DEFAULT CONFIG (editable desde el panel "Editar sitio") ====
 const DEFAULT_CONFIG = {
   whatsapp: '56988260006',
-  email: 'contacto@hechoencapas.cl',
-  instagram: '@hechoencapas',
+  email: 'contacto@taller3d.cl',
+  instagram: '@taller3d',
   address: 'Santiago, Chile',
   wholesaleQty: 3,
   wholesaleMessage: 'Si necesitas más de {qty} unidades, escríbenos por WhatsApp para un precio mayorista.'
@@ -122,7 +122,6 @@ const contactWhatsappText = document.getElementById('contactWhatsappText');
 const contactEmailText = document.getElementById('contactEmailText');
 const contactInstagramText = document.getElementById('contactInstagramText');
 const contactAddressText = document.getElementById('contactAddressText');
-const siteNameLogo = document.getElementById('siteNameLogo');
 const siteNameFooter = document.getElementById('siteNameFooter');
 const pageTitle = document.getElementById('pageTitle');
 const lockPanel = document.getElementById('lockPanel');
@@ -211,7 +210,6 @@ renderCart();
 
 // ==== CONFIG APPLIED TO DOM ====
 function applyConfigToDOM() {
-  siteNameLogo.textContent = SITE_NAME;
   siteNameFooter.textContent = SITE_NAME;
   pageTitle.textContent = `${SITE_NAME} | Impresión 3D a tu medida`;
   document.title = pageTitle.textContent;
