@@ -74,6 +74,16 @@ img { max-width: 100%; display: block; }
 .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
 .btn.full { width: 100%; }
 
+/* ---------- ANNOUNCEMENT BAR ---------- */
+.announcement-bar {
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  color: #fff;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 10px 16px;
+}
+
 /* ---------- HEADER ---------- */
 .site-header {
   position: sticky;
