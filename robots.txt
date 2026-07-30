@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hecho-en-capas.netlify.app/sitemap.xml
+Sitemap: https://taller3d.netlify.app/sitemap.xml
